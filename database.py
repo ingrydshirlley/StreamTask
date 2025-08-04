@@ -46,3 +46,11 @@ def mark_done(task_id):
     cursor.execute("UPDATE tasks SET done = 1 WHERE id = ?", (task_id,))
     conn.commit()
     conn.close()
+    
+
+def delete_task(task_id):
+    conn =  connect_db()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM tasks WHERE id = ?", (task_id,))
+    conn.commit()
+    conn.close()
