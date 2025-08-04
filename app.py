@@ -1,39 +1,36 @@
 import streamlit as st
-from database import create_tables
-from database import add_task, get_tasks, mark_done, delete_task
-
+from database.database import create_tables
+from ui.add_spacing import add_spacing
+from database.database import add_task, get_tasks, mark_done, delete_task
 
 create_tables()
 
 st.set_page_config(page_title="Task Manager", layout="centered")
-
 st.title("📝 Task Manager")
 
+
+# Espaçamento 
+add_spacing ()
+
+
 # Adicionar tarefa
-col1, col2 = st.columns([4, 1])  # Coluna maior pro input, menor pro botão
+task = st.text_input('Nova tarefa:')
+if st.button("Adicionar"):
+    if task:
+        add_task(task)
+        st.success("Tarefa adicionada com sucesso!")
+        st.rerun()
+        
+        
+add_spacing ()
 
-with col1:
-    task = st.text_input('default')
-
-with col2:
-    if st.button("Adicionar"):
-        if task:
-            add_task(task)
-            st.success("Tarefa adicionada com sucesso!")
-            st.rerun()
-
-# Espaço para um espaçamento mais harmônico
-st.write("")
-st.write("")
-st.write("")
-st.write("")
 
 # Listar tarefas
 st.subheader("📋 Tarefas")
 tasks = get_tasks()
 for task_id, description, done in tasks:
     if not done:
-        col3, col4 = st.columns([0.8, 0.2])  # Dividir linha em checkbox + botão
+        col3, col4 = st.columns([0.8, 0.2]) 
         with col3:
             if st.checkbox(description, key=task_id):
                 mark_done(task_id)
