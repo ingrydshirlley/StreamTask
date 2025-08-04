@@ -1,14 +1,7 @@
 # StreamTasks
 
 StreamTasks is a simple task manager app built with Streamlit and SQLite.  
-It allows you to add, mark as done, and visualize tasks with a lightweight local database.
-
-## Features
-
-- Add new tasks
-- Mark tasks as done
-- View pending and completed tasks
-- Persistent storage using SQLite
+It allows you to add, delete, mark as done, and visualize tasks with a lightweight local database.
 
 ## Requirements
 
@@ -22,3 +15,4 @@ It allows you to add, mark as done, and visualize tasks with a lightweight local
 ```bash
 git clone https://github.com/SEU-USUARIO/streamtasks.git
 cd streamtasks
+
