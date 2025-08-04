@@ -17,6 +17,7 @@ if st.button("Adicionar"):
         st.success("Tarefa adicionada com sucesso!")
         st.rerun()
 
+
 # Listar tarefas
 st.subheader("📋 Tarefas")
 tasks = get_tasks()
@@ -25,6 +26,7 @@ for task_id, description, done in tasks:
         if st.checkbox(description, key=task_id):
             mark_done(task_id)
             st.rerun()
+
 
 # Mostrar tarefas concluídas
 with st.expander("✅ Concluídas"):
